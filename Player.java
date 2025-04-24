@@ -9,5 +9,8 @@ public class Player extends Character{
         super(name, role, alibi, characterInfo, inventory, location);
     }
 
-    
+    public void move(Room r){
+        this.location = r;
+        System.out.println("[" + this.getName() + "] has moved to [" + r.getName() + "]");
+    }
 }

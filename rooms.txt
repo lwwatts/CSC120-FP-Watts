@@ -1,0 +1,12 @@
+Foyer: Description
+Library: Description
+Dining Room: Description
+Kitchen: Description
+Study: Description
+Office: Description
+Upstairs Hallway: Description
+Master Bedroom: Description
+Guest Bedroom: Description
+Edward's Bedroom: Description
+Edith's Bedroom: Description
+Edric's Bedroom: Description

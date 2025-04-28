@@ -28,6 +28,13 @@ public class Character {
         return this.location;
     }
 
+    public void checkHasCharacterInfo(){
+        System.out.println("[" + this.name + "] has information about the following characters: ");
+        for(String name: characterInfo.keySet()){
+            System.out.println("[" + name + "]");
+        }
+    }
+    
     public void checkCharacterInfo(String name){
         System.out.println("[" + this.name + "] has the following information about [" + name + "]:");
         System.out.println(this.characterInfo.get(name));

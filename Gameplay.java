@@ -4,6 +4,7 @@ import com.google.common.graph.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Hashtable;
+import java.util.Set;
 
 
 public class Gameplay {
@@ -39,16 +40,40 @@ public class Gameplay {
         // Make map
         map = GraphBuilder.undirected()
         .<Room>immutable()
+        .putEdge(this.rooms.get("study"), this.rooms.get("library"))
+        .putEdge(this.rooms.get("library"), this.rooms.get("foyer"))
+        .putEdge(this.rooms.get("foyer"), this.rooms.get("dining room"))
+        .putEdge(this.rooms.get("dining room"), this.rooms.get("kitchen"))
+        .putEdge(this.rooms.get("kitchen"), this.rooms.get("office"))
+        .putEdge(this.rooms.get("foyer"), this.rooms.get("upstairs hallway"))
+        .putEdge(this.rooms.get("upstairs hallway"), this.rooms.get("master bedroom"))
+        .putEdge(this.rooms.get("upstairs hallway"), this.rooms.get("guest bedroom"))
+        .putEdge(this.rooms.get("upstairs hallway"), this.rooms.get("edward's bedroom"))
+        .putEdge(this.rooms.get("upstairs hallway"), this.rooms.get("edith's bedroom"))
+        .putEdge(this.rooms.get("upstairs hallway"), this.rooms.get("edric's bedroom"))
         .build();
         
         // Make characters
-        player = new Player("Detective Poe", "murderer", "This character has no alibi.", new Hashtable<String, String>(), new ArrayList<String>(), this.rooms.get("study"));
+        player = new Player("Detective Poe", "murderer", "This character's alibi has been explained in the pre-game information.", new Hashtable<String, String>(), new ArrayList<String>(), this.rooms.get("study"));
+        Character countFitzgerald = new Character("Count Fitzgerald", "victim", "Even if this character had an alibi, he could not tell it to you, because he's dead.", new Hashtable<String, String>(), new ArrayList<String>(), this.rooms.get("study"));
+        this.characters.put("count fitzgerald", countFitzgerald);    
+        Character countessFitzgerald;
+        Character edwardFitzgerald;
+        Character edithFitzgerald;
+        Character edricFitzgerald;
+        Character Thomas;
+        Character Ella;
+        Character Maria;
+        Character Andrew;
+
     }
 
     public void gameLoop(){
         int guesses = 3;
         boolean won = false;
         Scanner userInput = new Scanner(System.in);
+
+        // Print introduction
         System.out.println("Welcome to MURDER MYSTERY!");
         System.out.println("Your name is [Detective Poe]. Last night, you arrived around 7:00 PM at the estate of your old friend, [Count Fitzgerald].");
         System.out.println("Around 8:00 PM, you sat down in the [Library] with [Count Fitzgerald] and his two sons, [Edward Fitzgerald] and [Edric Fitzgerald].");
@@ -62,6 +87,8 @@ public class Gameplay {
         System.out.println("Your task is to question the members of the household, investigate the rooms, and determine who the murderer is. You have three guesses.");
         System.out.println("The game begins now.");
         System.out.println("=========================================================================");
+       
+        // run game loop
         while(guesses != 0 && !won){
             // Establish current location
             Room currentRoom = player.getLocation();
@@ -79,11 +106,17 @@ public class Gameplay {
                     String currentMove = userInput.nextLine().toLowerCase().trim();
                     if(currentMove != "back"){
                         if(this.rooms.containsKey(currentMove)){
-                            player.move(this.rooms.get(currentMove));
-                            hasMoved = true;
-                            currentRoom = player.getLocation();
-                            System.out.println("You have moved to the [" + currentRoom.getName() + "].");
-                            currentRoom.checkDescription();
+                            Room nextRoom = this.rooms.get(currentMove);
+                            Set<Room> adjacentRooms = this.map.adjacentNodes(currentRoom);
+                            if(adjacentRooms.contains(nextRoom)){
+                                player.move(nextRoom);
+                                hasMoved = true;
+                                currentRoom = nextRoom;
+                                System.out.println("You have moved to the [" + currentRoom.getName() + "].");
+                                currentRoom.checkDescription();
+                            } else {
+                                System.out.println("Please enter a room that is connected to your current room.");
+                            }
                         } else {
                             System.out.println("Please enter a valid room name.");
                         }
@@ -92,12 +125,25 @@ public class Gameplay {
                     }
                 }
             }
+            System.out.println();
 
             // Offer choice to investigate characters (enter character investigation if user chooses)
-            if(currentRoom.hasCharacters()){
-                System.out.println("Would you like to investigate a character?");
-                System.out.println("Respond Y/N: ");
+            System.out.println("Would you like to investigate a character?");
+            System.out.println("Respond Y/N: ");
+            String willInvestigate = userInput.nextLine();
+            if(willInvestigate == "Y" || willInvestigate == "y"){
+                boolean hasInvestigated = false;
+                while(!hasInvestigated){
+                    System.out.println("What character would you like to investigate? Type 'back' if you no longer want to investigate a character.\n");
+                    String currentCharacter = userInput.nextLine().toLowerCase().trim();
+                    if(currentCharacter != "back"){
+
+                    } else {
+                        hasInvestigated = true;
+                    }
+                }
             }
+            System.out.println();
 
             // Offer choice to investigate items (enter item investigation if user chooses)
 
@@ -122,6 +168,7 @@ public class Gameplay {
                     }
                 }
             }
+            System.out.println();
         }
         userInput.close();
         System.out.println("Game over! Thank you for playing!");

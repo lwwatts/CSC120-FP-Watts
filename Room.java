@@ -21,13 +21,6 @@ public class Room {
     public void checkDescription(){
         System.out.println(this.description);
     }
-
-    public boolean hasCharacters(){
-        if(this.characters.size() == 0){
-            return false;
-        }
-        return true;
-    }
     
     public ArrayList<Character> getCharacters(){
         return this.characters;

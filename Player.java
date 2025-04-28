@@ -11,6 +11,7 @@ public class Player extends Character{
 
     public void move(Room r){
         this.location = r;
+        r.addCharacter(this);
         System.out.println("[" + this.getName() + "] has moved to [" + r.getName() + "]");
     }
 }

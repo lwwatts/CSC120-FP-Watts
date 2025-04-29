@@ -53,19 +53,78 @@ public class Gameplay {
         .putEdge(this.rooms.get("upstairs hallway"), this.rooms.get("edric's bedroom"))
         .build();
         
-        // Make characters
-        player = new Player("Detective Poe", "murderer", "This character's alibi has been explained in the pre-game information.", new Hashtable<String, String>(), new ArrayList<String>(), this.rooms.get("study"));
-        Character countFitzgerald = new Character("Count Fitzgerald", "victim", "Even if this character had an alibi, he could not tell it to you, because he's dead.", new Hashtable<String, String>(), new ArrayList<String>(), this.rooms.get("study"));
-        this.characters.put("count fitzgerald", countFitzgerald);    
-        Character countessFitzgerald;
-        Character edwardFitzgerald;
-        Character edithFitzgerald;
-        Character edricFitzgerald;
-        Character Thomas;
-        Character Ella;
-        Character Maria;
-        Character Andrew;
+        // Character alibis
+        String countessAlibi = "I'm offended that you feel the need to ask me, [Detective Poe]. You should know I would never hurt my husband. But if this will help with your investigation, then I'll tell you all I know. I greeted you when you arrived, [Detective]. Then I went upstairs to read in the [Master Bedroom]. I read until around 9:00 PM, then I went to bed. I didn't wake up until I heard [Ella] screaming this morning. I'm afraid I don't know anything else.";
+        String edwardAlibi = "Sure, [Detective]. I'll tell you what I can. As you know, my father summoned me and [Edric] to the [Library] around 8:00 PM last night. We talked for a while about Father's mining business. Then [Edric] went to bed around 9:00, and you, Father, and I moved into the [Study]. We talked about how you got to know Father when you investigated disruptions to mining operations in Eboracum. Then you went to bed around 10:00. Father and I went over estate affairs for another hour and half. [Thomas] came in around 11:00 to check on us, and everything seemed completely normal. When I went to bed around 11:30, I left my father still going over the estate's taxes. Please, find out what happened to my father.";
+        String edithAlibi = "";
+        String edricAlibi = "";
+        String thomasAlibi = "";
+        String ellaAlibi = "";
+        String mariaAlibi = "";
+        String andrewAlibi = "";
 
+        // Character intel
+        Hashtable<String, String> countessIntel = new Hashtable<String, String>();
+        Hashtable<String, String> edwardIntel = new Hashtable<String, String>();
+        Hashtable<String, String> edithIntel = new Hashtable<String, String>();
+        Hashtable<String, String> edricIntel = new Hashtable<String, String>();
+        Hashtable<String, String> thomasIntel = new Hashtable<String, String>();
+        Hashtable<String, String> ellaIntel = new Hashtable<String, String>();
+        Hashtable<String, String> mariaIntel = new Hashtable<String, String>();
+        Hashtable<String, String> andrewIntel = new Hashtable<String, String>();
+
+        // Character inventories
+        ArrayList<String> playerInventory = new ArrayList<String>();
+        ArrayList<String> countInventory = new ArrayList<String>();
+        ArrayList<String> countessInventory = new ArrayList<String>();
+        ArrayList<String> edwardInventory = new ArrayList<String>();
+        ArrayList<String> edithInventory = new ArrayList<String>();
+        ArrayList<String> edricInventory = new ArrayList<String>();
+        ArrayList<String> thomasInventory = new ArrayList<String>();
+        ArrayList<String> ellaInventory = new ArrayList<String>();
+        ArrayList<String> mariaInventory = new ArrayList<String>();
+        ArrayList<String> andrewInventory = new ArrayList<String>();
+
+        // Make characters + add characters to rooms
+        player = new Player("Detective Poe", "murderer", "detective", "This character's alibi has been explained in the pre-game information.", null, playerInventory, this.rooms.get("study"));
+        this.rooms.get("study").addCharacter(player);
+        this.characters.put("detective poe", player);
+        
+        Character countFitzgerald = new Character("Count Fitzgerald", "victim", "lord of the house", "Even if this character had an alibi, he could not tell it to you, because he's dead.", new Hashtable<String, String>(), countInventory, this.rooms.get("study"));
+        this.rooms.get("study").addCharacter(countFitzgerald);
+        this.characters.put("count fitzgerald", countFitzgerald);    
+        
+        Character countessFitzgerald = new Character("Countess Fitzgerald", "innocent", "lady of the house", countessAlibi, countessIntel, countessInventory, this.rooms.get("master bedroom"));
+        this.rooms.get("master bedroom").addCharacter(countessFitzgerald);
+        this.characters.put("countess fitzgerald", countessFitzgerald);
+        
+        Character edwardFitzgerald = new Character("Edward Fitzgerald", "red herring", "count's older son", edwardAlibi, edwardIntel, edwardInventory, this.rooms.get("library"));
+        this.rooms.get("library").addCharacter(edwardFitzgerald);
+        this.characters.put("edward fitzgerald", edwardFitzgerald);
+        
+        Character edithFitzgerald = new Character("Edith Fitzgerald", "innocent", "count's only daughter", edithAlibi, edithIntel, edithInventory, this.rooms.get("edith's bedroom"));
+        this.rooms.get("edith's room").addCharacter(edithFitzgerald);
+        this.characters.put("edith fitzgerald", edithFitzgerald);
+        
+        Character edricFitzgerald = new Character("Edric Fitzgerald", "innocent", "count's younger son", edricAlibi, edricIntel, edricInventory, this.rooms.get("library"));
+        this.rooms.get("library").addCharacter(edricFitzgerald);
+        this.characters.put("edric fitzgerald", edricFitzgerald);
+        
+        Character thomas = new Character("Thomas", "innocent", "butler", thomasAlibi, thomasIntel, thomasInventory, this.rooms.get("office"));
+        this.rooms.get("office").addCharacter(thomas);
+        this.characters.put("thomas", thomas);
+        
+        Character ella = new Character("Ella", "innocent", "housekeeper", ellaAlibi, ellaIntel, ellaInventory, this.rooms.get("dining room"));
+        this.rooms.get("dining room").addCharacter(ella);
+        this.characters.put("ella", ella);
+        
+        Character maria = new Character("Maria", "innocent", "head cook", mariaAlibi, mariaIntel, mariaInventory, this.rooms.get("kitchen"));
+        this.rooms.get("kitchen").addCharacter(maria);
+        this.characters.put("maria", maria);
+        
+        Character andrew = new Character("Andrew", "innocent", "groundskeeper", andrewAlibi, andrewIntel, andrewInventory, this.rooms.get("foyer"));
+        this.rooms.get("foyer").addCharacter(andrew);
+        this.characters.put("andrew", andrew);
     }
 
     public void gameLoop(){
@@ -98,7 +157,7 @@ public class Gameplay {
             // Offer choice to move (move and reprint location info if user chooses)
             System.out.println("Would you like to move locations?");
             System.out.println("Respond Y/N: ");
-            String willMove = userInput.nextLine();
+            String willMove = userInput.nextLine().trim();
             if(willMove == "Y" || willMove == "y"){
                 boolean hasMoved = false;
                 while(!hasMoved){
@@ -128,16 +187,26 @@ public class Gameplay {
             System.out.println();
 
             // Offer choice to investigate characters (enter character investigation if user chooses)
-            System.out.println("Would you like to investigate a character?");
+            currentRoom.showCharacters();
+            System.out.println("Would you like to investigate a character in this room?");
             System.out.println("Respond Y/N: ");
-            String willInvestigate = userInput.nextLine();
-            if(willInvestigate == "Y" || willInvestigate == "y"){
+            String willInvestigateCharacter = userInput.nextLine().trim();
+            if(willInvestigateCharacter == "Y" || willInvestigateCharacter == "y"){
                 boolean hasInvestigated = false;
                 while(!hasInvestigated){
                     System.out.println("What character would you like to investigate? Type 'back' if you no longer want to investigate a character.\n");
-                    String currentCharacter = userInput.nextLine().toLowerCase().trim();
-                    if(currentCharacter != "back"){
-
+                    String characterName = userInput.nextLine().toLowerCase().trim();
+                    if(characterName != "back"){
+                        if(this.characters.containsKey(characterName)){
+                            Character currentCharacter = this.characters.get(characterName);
+                            if(currentRoom.hasCharacter(currentCharacter)){
+                                this.investigateCharacter(currentCharacter, userInput);
+                            } else {
+                                System.out.println("Please enter a character that is in your current room.");
+                            }
+                        } else{
+                            System.out.println("Please enter a valid character name.");
+                        }
                     } else {
                         hasInvestigated = true;
                     }
@@ -146,11 +215,31 @@ public class Gameplay {
             System.out.println();
 
             // Offer choice to investigate items (enter item investigation if user chooses)
+            currentRoom.showEvidence();
+            System.out.println("Would you like to investigate any of the items in this room?");
+            System.out.println("Respond Y/N: ");
+            String willInvestigateItem = userInput.nextLine().trim();
+            if(willInvestigateItem == "Y" || willInvestigateItem == "y"){
+                boolean hasInvestigated = false;
+                while(!hasInvestigated){
+                    System.out.println("What item would you like to investigate? Type 'back' if you no longer want to investigate an item.\n");
+                    String itemName = userInput.nextLine().toLowerCase().trim();
+                    if(itemName != "back"){
+                        if(currentRoom.hasEvidence(itemName)){
+                            currentRoom.checkEvidence(itemName);
+                        } else {
+                            System.out.println("Please enter an item that is in your current room.");
+                        }
+                    } else {
+                        hasInvestigated = true;
+                    }
+                }
+            }
 
             // Offer choice to guess murderer (make guess if user chooses)
             System.out.println("Would you like to guess the murderer? You have " + guesses + " guesses remaining.");
             System.out.println("Respond Y/N: ");
-            String willGuess = userInput.nextLine();
+            String willGuess = userInput.nextLine().trim();
             if(willGuess == "Y" || willGuess == "y"){
                 boolean hasGuessed = false;
                 while(!hasGuessed){
@@ -174,10 +263,67 @@ public class Gameplay {
         System.out.println("Game over! Thank you for playing!");
     }
 
-    public void investigateCharacter(Character c){
+    public void investigateCharacter(Character c, Scanner userInput){        
+        // Introduce character underinvestigation
+        System.out.println();
+        System.out.println("You are currently investigating [" + c.getName() + "].");
+        c.checkDescription();
 
+        // Offer choice to check alibi
+        System.out.println("Would you like to ask for [" + c.getName() + "]'s alibi?");
+        System.out.println("Respond Y/N: ");
+        String askAlibi = userInput.nextLine().trim();
+        if(askAlibi == "Y" || askAlibi == "y"){
+            System.out.println(c.getName() + ": ");
+            c.checkAlibi();
+        }
+        System.out.println();
+
+        // Offer choice to ask about other characters
+        c.checkCharacterInfo();
+        System.out.println("Would you like to ask [" + c.getName() + "] about other characters?");
+        System.out.println("Respond Y/N: ");
+        String askAboutOthers = userInput.nextLine().trim();
+        if(askAboutOthers == "Y" || askAboutOthers == "y"){
+            boolean hasAsked = false;
+            while(!hasAsked){
+                System.out.println("What character would you like to ask about? Type 'back' if you are done asking about charatcers.\n");
+                String characterName = userInput.nextLine().toLowerCase().trim();
+                if(characterName != "back"){
+                    if(this.characters.containsKey(characterName)){
+                        if(c.checkHasCharacterInfo(characterName)){
+                            c.getCharacterInfo(characterName);
+                            System.out.println();
+                        } else {
+                            System.out.println("Please enter a character that [" + c.getName() + "] knows about.");
+                        }
+                    } else{
+                        System.out.println("Please enter a valid character name.");
+                    }
+                } else {
+                    hasAsked = true;
+                }
+            }
+        }
+        System.out.println();
+
+        // Offer choice to look at character's inventory
+        System.out.println("Would you like to look at [" + c.getName() + "]'s inventory?");
+        System.out.println("Respond Y/N: ");
+        String lookAtInventory = userInput.nextLine().trim();
+        if(lookAtInventory == "Y" || lookAtInventory == "y"){
+            c.checkInventory();
+        }
+        System.out.println();
+
+        System.out.println("You have finished investigating [" + c.getName() + "]");
     }
     
+    /**
+     * Checks if a certain character is the murderer
+     * @param c the character whose role is in question
+     * @return T/F: whether or not the character is the murderer
+     */
     public boolean guessMurderer(Character c){
         boolean guess = c.isMurderer();
         if(guess){

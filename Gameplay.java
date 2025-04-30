@@ -15,9 +15,14 @@ public class Gameplay {
     Player player;
     ImmutableGraph<Room> map;
 
-
+    /**
+     * Constructor for gameplay class
+     */
     public Gameplay(){
-        
+        // Initialize
+        this.rooms = new Hashtable<String, Room>();
+        this.characters = new Hashtable<String, Character>();
+
         // Make rooms
         ArrayList<Room> rooms = new ArrayList<>();
         try{
@@ -54,14 +59,14 @@ public class Gameplay {
         .build();
         
         // Character alibis
-        String countessAlibi = "I'm offended that you feel the need to ask me, [Detective Poe]. You should know I would never hurt my husband. But if this will help with your investigation, then I'll tell you all I know. I greeted you when you arrived, [Detective]. Then I went upstairs to read in the [Master Bedroom]. I read until around 9:00 PM, then I went to bed. I didn't wake up until I heard [Ella] screaming this morning. I'm afraid I don't know anything else.";
+        String countessAlibi = "I'm offended that you feel the need to ask me, [Detective Poe]. You should know I would never hurt my husband. But if this will help with your investigation, then I'll tell you all I know. Alongside my husband, I greeted you when you arrived, [Detective]. Then I went upstairs to read in the [Master Bedroom]. I read until around 9:00 PM, then I went to bed. I didn't wake up until I heard [Ella] screaming this morning. I'm afraid I don't know anything else.";
         String edwardAlibi = "Sure, [Detective]. I'll tell you what I can. As you know, my father summoned me and [Edric] to the [Library] around 8:00 PM last night. We talked for a while about Father's mining business. Then [Edric] went to bed around 9:00, and you, Father, and I moved into the [Study]. We talked about how you got to know Father when you investigated disruptions to mining operations in Eboracum. Then you went to bed around 10:00. Father and I went over estate affairs for another hour and half. [Thomas] came in around 11:00 to check on us, and everything seemed completely normal. When I went to bed around 11:30, I left my father still going over the estate's taxes. Please, find out what happened to my father.";
-        String edithAlibi = "";
-        String edricAlibi = "";
-        String thomasAlibi = "";
-        String ellaAlibi = "";
-        String mariaAlibi = "";
-        String andrewAlibi = "";
+        String edithAlibi = "I don't know anything, [Detective], I swear! When I went to bed, you were still talking with my father and [Edward] downstairs! I did wake up at some time during the night, I think around 2:00 AM. I went downstairs to get some water from the [Kitchen], since I didn't want to wake anyone up at that hour just for water. When I was in the [Foyer] I could see light coming from the [Study], so I assumed my father was still working and went back to bed. Do you think he was already dead then? What if I could have helped him? Oh please, [Detective], you have to find out what happened!";
+        String edricAlibi = "You probably know more than I do, [Detective], since you and [Edward] stayed with my father when I went to bed. I doubt I can tell you anything you don't already know. Or… wait a second. I did wake up at one point during the night. I'm usually a pretty light sleeper, so something must have woken me up, but I didn't hear or see anything once I was awake. I'm not sure when exactly it was, but I heard the clock in the [Foyer] strike 4:00 AM while I was trying to fall back asleep. I'm praying you sort this out soon, [Detective]. ";
+        String thomasAlibi = "Of course, [Detective], I'm happy to answer any questions you have if it will help resolve this matter sooner. I went about my routine as usual last night. I first locked all the doors to the manor around 10:30 PM. Then I made a sweep of the first floor just to check that everything was tidied up. I didn't notice anything out of the ordinary. The last stop of my sweep was the [Study]. When I got there, the [Count] and [Lord Edward] were still going over papers. I made sure they didn't need anything, then I put my keys in the [Office] and went to bed. I got up at 5:00 AM along with [Ella] and [Maria]. I then picked up my keys from the [Office] where I left them and unlocked all the doors to the manor. Then I went back to the [Office] to review tasks for today. I didn't know what had happened until one of the servants came in to inform me of your investigation. I hope my information helps.";
+        String ellaAlibi = "I'm not sure how much help I'll be, but I'm happy to tell you what I know, [Detective]. I helped the [Countess] change into her nightgown and get settled in the [Master Bedroom] around 8:30 PM last night. Then I went to get [Lady Edith] ready for bed around 9:00 PM. I passed [Lord Edric] in the [Upstairs Hallway] as I was leaving [Edith's Bedroom]. [Lord Edric] looked like he was also going to bed. After that, I went downstairs to the [Kitchen] to go over the day's work and talk with [Maria] while she cleaned up and prepared for breakfast today. [Thomas] dropped by around 11:00 PM to tell us he was going to bed. [Maria] and I talked for a while longer, then both went to bed shortly after the clock struck midnight. I didn't get up until 5:00 AM, which is when I usually get up. I first woke all the other servants, and all of us ate breakfast in the [Kitchen]. I finished earlier than most of the others and went to do a sweep of the downstairs to see what work needed to be done. That's when I entered the [Study] and found the [Count]. I'm afraid I can't remember anything more.";
+        String mariaAlibi = "I'm not sure what you're hoping to learn from me, [Detective]. I spend most of my time in the [Kitchen], so I don't interact much with the rest of the household, especially not the [Count]. I was in the [Kitchen] all of last night, and [Ella] joined me for a while. We both went to bed around midnight. When I got up in the morning, I went straight to the [Kitchen], and I haven't left it since. I only know what's going on because one of the other servants told me. The only unusual thing that happened to me in the past day was that I had to cook more food because of your unexpected visit. Good luck with the case, [Detective], but I can't help you.";
+        String andrewAlibi = "Look, [Detective], there's not much to tell. I didn't do it, and I couldn't have done it. I went to my cabin on the estate grounds around 10:00 PM, and I was there all night. I couldn't have gotten back in the manor if I tried -- [Thomas] locks the doors at night, you can ask him. Although, now that I think about it, when I got up and did my morning sweep of the grounds around 4:00 AM, I thought I saw someone in a long coat moving in the [Upstairs Hallway]. It was still dark outside so I couldn't see well, but I could've sworn there was someone there. I hope that helps.";
 
         // Character intel
         Hashtable<String, String> countessIntel = new Hashtable<String, String>();
@@ -103,7 +108,7 @@ public class Gameplay {
         this.characters.put("edward fitzgerald", edwardFitzgerald);
         
         Character edithFitzgerald = new Character("Edith Fitzgerald", "innocent", "count's only daughter", edithAlibi, edithIntel, edithInventory, this.rooms.get("edith's bedroom"));
-        this.rooms.get("edith's room").addCharacter(edithFitzgerald);
+        this.rooms.get("edith's bedroom").addCharacter(edithFitzgerald);
         this.characters.put("edith fitzgerald", edithFitzgerald);
         
         Character edricFitzgerald = new Character("Edric Fitzgerald", "innocent", "count's younger son", edricAlibi, edricIntel, edricInventory, this.rooms.get("library"));
@@ -127,6 +132,10 @@ public class Gameplay {
         this.characters.put("andrew", andrew);
     }
 
+    
+    /**
+     * Runs all the game operations, including the user interface
+     */
     public void gameLoop(){
         int guesses = 3;
         boolean won = false;
@@ -155,18 +164,23 @@ public class Gameplay {
             currentRoom.checkDescription();
 
             // Offer choice to move (move and reprint location info if user chooses)
+            System.out.println("From the [" + currentRoom.getName() + "] you can move to the following places: ");
+            Set<Room> adjacentRooms = map.adjacentNodes(currentRoom);
+            for(Room r : adjacentRooms){
+                System.out.println("\t* " + r.getName());
+            }
             System.out.println("Would you like to move locations?");
             System.out.println("Respond Y/N: ");
             String willMove = userInput.nextLine().trim();
-            if(willMove == "Y" || willMove == "y"){
+            System.out.println("willMove contents: " + willMove);
+            if(willMove.equals("Y") || willMove.equals("y")){
                 boolean hasMoved = false;
                 while(!hasMoved){
                     System.out.println("What room would you like to move to? Type 'back' if you no longer want to move.\n");
                     String currentMove = userInput.nextLine().toLowerCase().trim();
-                    if(currentMove != "back"){
+                    if(!currentMove.equals("back")){
                         if(this.rooms.containsKey(currentMove)){
                             Room nextRoom = this.rooms.get(currentMove);
-                            Set<Room> adjacentRooms = this.map.adjacentNodes(currentRoom);
                             if(adjacentRooms.contains(nextRoom)){
                                 player.move(nextRoom);
                                 hasMoved = true;
@@ -191,12 +205,12 @@ public class Gameplay {
             System.out.println("Would you like to investigate a character in this room?");
             System.out.println("Respond Y/N: ");
             String willInvestigateCharacter = userInput.nextLine().trim();
-            if(willInvestigateCharacter == "Y" || willInvestigateCharacter == "y"){
+            if(willInvestigateCharacter.equals("Y") || willInvestigateCharacter.equals("y")){
                 boolean hasInvestigated = false;
                 while(!hasInvestigated){
                     System.out.println("What character would you like to investigate? Type 'back' if you no longer want to investigate a character.\n");
                     String characterName = userInput.nextLine().toLowerCase().trim();
-                    if(characterName != "back"){
+                    if(!characterName.equals("back")){
                         if(this.characters.containsKey(characterName)){
                             Character currentCharacter = this.characters.get(characterName);
                             if(currentRoom.hasCharacter(currentCharacter)){
@@ -219,12 +233,12 @@ public class Gameplay {
             System.out.println("Would you like to investigate any of the items in this room?");
             System.out.println("Respond Y/N: ");
             String willInvestigateItem = userInput.nextLine().trim();
-            if(willInvestigateItem == "Y" || willInvestigateItem == "y"){
+            if(willInvestigateItem.equals("Y") || willInvestigateItem.equals("y")){
                 boolean hasInvestigated = false;
                 while(!hasInvestigated){
                     System.out.println("What item would you like to investigate? Type 'back' if you no longer want to investigate an item.\n");
                     String itemName = userInput.nextLine().toLowerCase().trim();
-                    if(itemName != "back"){
+                    if(!itemName.equals("back")){
                         if(currentRoom.hasEvidence(itemName)){
                             currentRoom.checkEvidence(itemName);
                         } else {
@@ -240,14 +254,17 @@ public class Gameplay {
             System.out.println("Would you like to guess the murderer? You have " + guesses + " guesses remaining.");
             System.out.println("Respond Y/N: ");
             String willGuess = userInput.nextLine().trim();
-            if(willGuess == "Y" || willGuess == "y"){
+            if(willGuess.equals("Y") || willGuess.equals("y")){
                 boolean hasGuessed = false;
                 while(!hasGuessed){
                     System.out.println("What character would you like to guess? Type 'back' if you no longer want to make a guess.\n");
                     String currentGuess = userInput.nextLine().toLowerCase().trim();
-                    if(currentGuess != "back"){
+                    if(!currentGuess.equals("back")){
                         if(characters.containsKey(currentGuess)){
                             won = guessMurderer(characters.get(currentGuess));
+                            if(!won){
+                                guesses -= 1;
+                            }
                             hasGuessed = true;
                         } else {
                             System.out.println("Please enter a valid character name.");
@@ -263,6 +280,11 @@ public class Gameplay {
         System.out.println("Game over! Thank you for playing!");
     }
 
+    /**
+     * Runs the user interface for character investigation
+     * @param c the character under investigation
+     * @param userInput the scanner listening for user input
+     */
     public void investigateCharacter(Character c, Scanner userInput){        
         // Introduce character underinvestigation
         System.out.println();
@@ -273,7 +295,7 @@ public class Gameplay {
         System.out.println("Would you like to ask for [" + c.getName() + "]'s alibi?");
         System.out.println("Respond Y/N: ");
         String askAlibi = userInput.nextLine().trim();
-        if(askAlibi == "Y" || askAlibi == "y"){
+        if(askAlibi.equals("Y") || askAlibi.equals("y")){
             System.out.println(c.getName() + ": ");
             c.checkAlibi();
         }
@@ -284,12 +306,12 @@ public class Gameplay {
         System.out.println("Would you like to ask [" + c.getName() + "] about other characters?");
         System.out.println("Respond Y/N: ");
         String askAboutOthers = userInput.nextLine().trim();
-        if(askAboutOthers == "Y" || askAboutOthers == "y"){
+        if(askAboutOthers.equals("Y") || askAboutOthers.equals("y")){
             boolean hasAsked = false;
             while(!hasAsked){
                 System.out.println("What character would you like to ask about? Type 'back' if you are done asking about charatcers.\n");
                 String characterName = userInput.nextLine().toLowerCase().trim();
-                if(characterName != "back"){
+                if(!characterName.equals("back")){
                     if(this.characters.containsKey(characterName)){
                         if(c.checkHasCharacterInfo(characterName)){
                             c.getCharacterInfo(characterName);
@@ -311,7 +333,7 @@ public class Gameplay {
         System.out.println("Would you like to look at [" + c.getName() + "]'s inventory?");
         System.out.println("Respond Y/N: ");
         String lookAtInventory = userInput.nextLine().trim();
-        if(lookAtInventory == "Y" || lookAtInventory == "y"){
+        if(lookAtInventory.equals("Y") || lookAtInventory.equals("y")){
             c.checkInventory();
         }
         System.out.println();
@@ -335,6 +357,8 @@ public class Gameplay {
     }
 
     public static void main(String[] args) {
+        Gameplay gameplay = new Gameplay();
+        gameplay.gameLoop();
     }
 
 }

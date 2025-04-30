@@ -228,28 +228,6 @@ public class Gameplay {
             }
             System.out.println();
 
-            // Offer choice to investigate items (enter item investigation if user chooses)
-            currentRoom.showEvidence();
-            System.out.println("Would you like to investigate any of the items in this room?");
-            System.out.println("Respond Y/N: ");
-            String willInvestigateItem = userInput.nextLine().trim();
-            if(willInvestigateItem.equals("Y") || willInvestigateItem.equals("y")){
-                boolean hasInvestigated = false;
-                while(!hasInvestigated){
-                    System.out.println("What item would you like to investigate? Type 'back' if you no longer want to investigate an item.\n");
-                    String itemName = userInput.nextLine().toLowerCase().trim();
-                    if(!itemName.equals("back")){
-                        if(currentRoom.hasEvidence(itemName)){
-                            currentRoom.checkEvidence(itemName);
-                        } else {
-                            System.out.println("Please enter an item that is in your current room.");
-                        }
-                    } else {
-                        hasInvestigated = true;
-                    }
-                }
-            }
-
             // Offer choice to guess murderer (make guess if user chooses)
             System.out.println("Would you like to guess the murderer? You have " + guesses + " guesses remaining.");
             System.out.println("Respond Y/N: ");

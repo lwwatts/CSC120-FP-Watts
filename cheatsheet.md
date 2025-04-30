@@ -7,7 +7,7 @@ My game doesn't have a set of commands available at all times. Instead, the inte
 - For yes/no questions: 'Y' or 'y' will be considered a yes, anything else will be considered a no
 - For during investigation/moving/guessing: 
     - 'back' will stop whatever move/investigation/guess is currently ongoing. This command is not case sensitive.
-    - For room/character/item names, the user must type in exactly what is contained in the brackets listing the names. However, room/character/item names are not case sensitive. Before moving to a room or investigating a character or item, a list of the available rooms/characters/items will be displayed.
+    - For room/character names, the user must type in exactly what is contained in the brackets listing the names. However, room/character names are not case sensitive. Before moving to a room or investigating a character, a list of the available rooms/characters will be displayed.
     - If the user inputs something that is not 'back' or a valid name, the computer will prompt them to try again
 
 # SPOILER ALERT

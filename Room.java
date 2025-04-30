@@ -1,11 +1,9 @@
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 public class Room {
 
     // Attributes:
     String name;
-    Hashtable<String, String> evidence;
     String description;
     ArrayList<Character> characters;
 
@@ -17,7 +15,6 @@ public class Room {
      */
     public Room(String name, String description){
         this.name = name;
-        this.evidence = new Hashtable<String, String>();
         this.description = description;
         this.characters = new ArrayList<>();
     }
@@ -54,42 +51,6 @@ public class Room {
      */
     public boolean hasCharacter(Character c){
         return this.characters.contains(c);
-    }
-
-    /**
-     * Adds items that the user can investigate to the room
-     * @param item the name of the item to be added to the room
-     * @param description a description of the item to be added to the room
-     */
-    public void addEvidence(String item, String description){
-        this.evidence.put(item, description);
-    }
-
-    /**
-     * Displays the names of the evidence items located in the room
-     */
-    public void showEvidence(){
-        System.out.println("The [" + this.name + "] has the following items: ");
-        for(String item: evidence.keySet()){
-            System.out.println("\t* " + item);
-        }
-    }
-
-    /**
-     * Checks if a certain item is in the room
-     * @param item the name of the item of interest
-     * @return T/F: whether or not the item is in the room
-     */
-    public boolean hasEvidence(String item){
-        return this.evidence.containsKey(item);
-    }
-
-    /**
-     * Displays the description of a certain item in the room
-     * @param item the name of the item of interest
-     */
-    public void checkEvidence(String item){
-        System.out.println(this.evidence.get(item));
     }
 
     /**

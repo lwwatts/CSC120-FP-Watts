@@ -70,25 +70,73 @@ public class Gameplay {
 
         // Character intel
         Hashtable<String, String> countessIntel = new Hashtable<String, String>();
+        countessIntel.put("edward fitzgerald", "Oh, [Edward] wouldn't hurt his father. The two of them have always been close, since my husband has been preparing [Edward] to receive the title of count one day.");
+        countessIntel.put("edith fitzgerald", "[Edith] could never hurt a fly! She's such a shy girl, always hiding in her room. My husband was working hard to find a husband for her though.");
+        countessIntel.put("edric fitzgerald", "[Edric] fought with his father a lot, since [Edric] wants to join the priesthood while his father would rather he practice law. But I don't believe [Edric] would ever truly hurt his father, he's such a sweet boy.");
+        countessIntel.put("thomas", "Ah, I don't actually know much about [Thomas]. He's a more recent hire. He was highly recommended by the last household he worked for though. They emphasized just how thorough he is when it comes to paperwork.");
+        countessIntel.put("ella", "[Ella] has worked for our family for years. My husband took her in and gave her a job when she needed one. She would never betray him.");
+        countessIntel.put("maria", "[Maria] has been a great blessing to our family. When we were struggling to make ends meet before my husband opened his mines, [Maria] was always able to make the best meals with only a few ingredients. She's a kind soul. I can't imagine she'd ever murder anyone.");
+        countessIntel.put("andrew", "I've never interacted with Andrew very much, nor do I know much about him. My husband took a trip to Eboracum several years ago to check on the mines he owned there. I believe that's actually when he met you, [Detective]. But anyway, he came back from that trip with [Andrew] and told me that [Andrew] was going to be our new groundskeeper.");
         Hashtable<String, String> edwardIntel = new Hashtable<String, String>();
+        edwardIntel.put("countess fitzgerald", "My mother and my father may have had an arranged marriage, but they were always on good terms. My father gave my mother everything he could. She would never hurt him.");
+        edwardIntel.put("edith fitzgerald", "My sister is a shut-in, always hiding away in her room with her latest book. Even if she did have some issue with my father, [Edith] isn't the type for violence.");
+        edwardIntel.put("edric fitzgerald", "I hate to speak ill of my brother, [Detective], but [Edric] and Father never got along. They might have seemed peaceful last night, but they've been arguing even more than usual lately. It's all about [Edric]'s career choice. He wants to waste the opportunities our father has given us by going off and joining the priesthood.");
+        edwardIntel.put("thomas", "[Thomas] has been a large help around here lately, helping my father and I review our family's account books. He really is brilliant with numbers. [Thomas] is loyal to my father. He's definitely not the culprit here.");
+        edwardIntel.put("ella", "My mother adores [Ella] since she's always been a reliable housekeeper, even when we were going through financial problems and couldn't pay her properly. Personally, I've always thought [Ella] was a bit too nosy for her own good, but after all she's done for us, I can't really hold it against her.");
         Hashtable<String, String> edithIntel = new Hashtable<String, String>();
+        edithIntel.put("countess fitzgerald", "My mother is an angel. I know she didn't love my father in a romantic way, but she certainly loved him like family. I refuse to believe that she'd hurt him.");
+        edithIntel.put("edward fitzgerald", "[Edward] is such a snob. He's been kissing up to our father since we were young. He's just been waiting for the day he finally gets to inherit the title. Well, I guess he finally got what he wanted, though I doubt he wanted it like this.");
+        edithIntel.put("edric fitzgerald", "[Edric] is much nicer than [Edward]. And don't tell [Edward], but I think [Edric] would make a great priest. He's so kind, though he's also as stubborn as they come. I know [Edric] fought with our father, but he would certainly never murder him.");
+        edithIntel.put("ella", "[Ella] is wonderful. She took care of me when I was younger, and she brings me new books to read. She definitely didn't kill my father.");
+        edithIntel.put("maria", "[Maria] has supported our family for a long time, and she's always been kind to me. She was never resentful when we couldn't afford to pay much. [Maria] may seem fierce, but she's a very caring person. She's no murderer.");
         Hashtable<String, String> edricIntel = new Hashtable<String, String>();
+        edricIntel.put("countess fitzgerlad", " You can't actually believe my mother murdered my father. She's stood by him through thick and thin. Even when our family hit hard times, she supported my father. Besides, she's just not a violent person.");
+        edricIntel.put("edward fitzgerald", "Please forgive me for what I'm about to say, but my brother is as obnoxious and greedy as they come. [Edward] has never been content with what our family had. He was actually the one who pushed my father to look at mining in Eboracum. He's always looking for ways to grow his own power. I can't believe my own brother would commit patricide, but… he certainly won't mind his new position.");
+        edricIntel.put("edith fitzgerald", "My sister may be far sharper than she lets on to most people, but she's still as gentle as she looks. [Edith] didn't like our father's plans to marry her off, but despite that, she still loved our father. She would never hurt him, even if she could.");
         Hashtable<String, String> thomasIntel = new Hashtable<String, String>();
+        thomasIntel.put("edward fitzgerald", "[Lord Edward] is a talented young man, though he lacks his father's kindness. However, he's hardly cruel enough to murder his own father in cold blood.");
+        thomasIntel.put("ella", "[Ella] has been working here far longer than I have, and she's earned the trust the family has in her.");
+        thomasIntel.put("maria", "[Maria] is a talented cook and a loyal woman. She's been with the family for a long time, and I don't believe she'd ever harm her employer.");
+        thomasIntel.put("andrew", "When it comes to [Andrew], I must confess I harbor some suspicion. He wasn't hired through any of the normal processes, and when I was going over the estate's accounts, I noticed he has an unusually high wage for a groundskeeper. I suspect he may have been blackmailing the [Count], although I never got the chance to speak to the [Count] about it.");
         Hashtable<String, String> ellaIntel = new Hashtable<String, String>();
+        ellaIntel.put("edith fitzgerald", "Oh, [Lady Edith] is such a smart girl. She's always reading some new mystery novel. I've told her that such gruesome stories aren't appropriate for a girl her age, but she insists that there's nothing she can't handle. She's still a gentle soul though.");
+        ellaIntel.put("thomas", "[Thomas] is a more recent hire, so I don't know him as well as I'd like to, but he's been a great help to me since he arrived. He always knows what's going on everywhere.");
+        ellaIntel.put("maria", "[Maria] has been a dear friend of mine for a long time. We've both been with the Fitzgerald family for ages, even when times were hard for them. She acts all tough sometimes, but she's a sweetheart.");
         Hashtable<String, String> mariaIntel = new Hashtable<String, String>();
+        mariaIntel.put("thomas", "[Thomas] was always off with the [Count] and [Lord Edward] going over some paperwork, so I can't tell you much about him. He's certainly efficient though. He never lets a mistake slip by him.");
+        mariaIntel.put("ella", "[Ella] is the best sort of person you'll ever meet, and I'm damn lucky to have a friend like her. She cares for the Fitzgeralds like their her own family. It's why she stayed, even when the family hit hard times.");
+        mariaIntel.put("andrew", "I've never liked [Andrew] much, always skulking around, avoiding the rest of us. Besides, he's never bothered to hide his disdain for the [Count] either. Rotten man, if you ask me.");
         Hashtable<String, String> andrewIntel = new Hashtable<String, String>();
+        andrewIntel.put("count fitzgerald", "Look, [Count Fitzgerald] didn't deserve his good name, that's all I'm going to say. But hey, [Detective], I'm sure you know that well enough by now.");
 
         // Character inventories
         ArrayList<String> playerInventory = new ArrayList<String>();
+        playerInventory.add("A newspaper clipping with the headline 'Young girl dies in mining accident.'");
         ArrayList<String> countInventory = new ArrayList<String>();
+        countInventory.add("An unopened letter of no importance.");
+        countInventory.add("A worn wedding ring.");
         ArrayList<String> countessInventory = new ArrayList<String>();
+        countessInventory.add("Several used handkerchiefs.");
+        countessInventory.add("A tube of smelling salts.");
+        countessInventory.add("A worn wedding ring.");
         ArrayList<String> edwardInventory = new ArrayList<String>();
+        edwardInventory.add("The count's seal.");
+        edwardInventory.add("A heavy purse.");
         ArrayList<String> edithInventory = new ArrayList<String>();
+        edithInventory.add("A locket with a picture of an unfamiliar young man.");
+        edithInventory.add("A mystery novel.");
         ArrayList<String> edricInventory = new ArrayList<String>();
+        edricInventory.add("A string of prayer beads.");
+        edricInventory.add("A cross necklace.");
         ArrayList<String> thomasInventory = new ArrayList<String>();
+        thomasInventory.add("The keys to the house's exterior doors.");
         ArrayList<String> ellaInventory = new ArrayList<String>();
+        ellaInventory.add("The keys to the house's interior doors.");
         ArrayList<String> mariaInventory = new ArrayList<String>();
+        mariaInventory.add("A paring knife.");
         ArrayList<String> andrewInventory = new ArrayList<String>();
+        andrewInventory.add("A shovel.");
+        andrewInventory.add("An expensive-looking pocket watch.");
 
         // Make characters + add characters to rooms
         player = new Player("Detective Poe", "murderer", "detective", "This character's alibi has been explained in the pre-game information.", null, playerInventory, this.rooms.get("study"));
@@ -148,7 +196,7 @@ public class Gameplay {
         System.out.println("Around 9:00 PM, [Edric Fitzgerald] went to bed, and you, [Count Fitzgerald], and [Edward Fitzgerald] moved into the [Study].");
         System.out.println("Around 10:30 PM, you went to bed in the [Guest Bedroom].");
         System.out.println("This morning, around 6:00 AM, you were woken by the sound of screaming. When you follow the screaming to its source, you find [Ella], the housekeeper, in the [Study].");
-        System.out.println("Next to [Ella], [Count Fitzgerald] is still sitting at his desk. Given the large amount of blood on the desk, [Count Fitzgerald] is very obviously dead.");
+        System.out.println("Next to [Ella], [Count Fitzgerald] is lying on the ground behind his desk. Given the large amount of blood under him, [Count Fitzgerald] is very obviously dead.");
         System.out.println("Moments later, [Countess Fitzgerald] also enters the [Study]. She promptly faints. When [Ella] manages to awake her, [Countess Fitzgerald] asks you to investigate the case of her husband's apparent murder.");
         System.out.println("=========================================================================");
         System.out.println("During your investigation, you will be able to move freely throughout the house. As you move, you can find different members of the household in different rooms.");

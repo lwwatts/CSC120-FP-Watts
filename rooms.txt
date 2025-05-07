@@ -1,12 +1,12 @@
-Foyer: Description
-Library: Description
-Dining Room: Description
-Kitchen: Description
-Study: Description
-Office: Description
-Upstairs Hallway: Description
-Master Bedroom: Description
-Guest Bedroom: Description
-Edward's Bedroom: Description
-Edith's Bedroom: Description
-Edric's Bedroom: Description
+Foyer: The foyer is mostly empty. A grand staircase leads upwards at one end of it. At the other end is the main door to the house. In one corner next to the door is a large grandfather clock. There are muddy tracks next to the door that have not yet been cleaned up.
+Library: Tall bookshelves hide the wall of the room. A ladder sits next to one of the shelves. Two couches are arranged around a small table in the center of the room. The table is also covered in books. Light streams in through the windows, illuminating the space. There are several lamps sitting on corner tables around the room, but they are all off.
+Dining Room: An unlit chandelier hangs over a long dining table in the center of the room. The table only has five chairs around it, though it could certainly fit many more. There are no remains of dinner the night before, and the table has not yet been set for breakfast this morning. The room is lit by the sunlight coming through large windows on one wall.
+Kitchen: The day's breakfast sits cooling on stove and countertops, never served. Racks full of pots, pans, knives, and spoons cover the walls. A large table with many chairs around it takes up one side of the room. This is where the servants eat their meals.
+Study: The count's body is sprawled face down on the ground behind his desk, with a large pool of blood spreading underneath him. A chair is fallen on the ground next to him, while another chair sits upright on the other side of the desk. The desk lamp lies broken on the door. Paperwork and letters are scattered across the desk and floor.
+Office: Payment records and income reports for the estate are piled up on a desk in the corner. Next to the door is a hook where keys would go. There are no keys hanging on the hook presently. Hanging on the wall above the desk are two maps. One shows the layout of the manor and its grounds. The other shows the layout of a small town. The name 'Eboracum' is printed across the top.
+Upstairs Hallway: The hallway stretches off in either direction from the top of the foyer stairs. Tall windows break up the wall next to the stairs every few feet. The gardens of the estate are visible through the windows. The wall opposite the stairs is broken up by five closed doors.
+Master Bedroom: A large, canopied bed takes up much of the space. Two dressers sit against the far wall, with a walk-in closet next to them. The closet door is open, revealing many dresses and coats inside. On the way next to the door is a vanity with various powders and creams scattered across it. The bed is unmade.
+Guest Bedroom: A large bed sits in the center of the room. A small writing desk with a chair sits off to one side. A travel bag rests at the foot of the bed, and a heavy travel coat hangs over the back of the chair. A drafted letter sits on the the desk, next to a silver letter opener engraved with the letters E.F.
+Edward's Bedroom: A large, neat bed sits in the center of the room. A desk covered in paperwork sits underneath the windows on one wall. A coatrack stands next to the door with a long coat hanging off one of the pegs.
+Edith's Bedroom: A somewhat small bed takes up one corner of the room. Next to the bed is a windowseat covered in pillows. On the other side of the bed is a small vanity, which appears mostly unused. Most of the walls are hidden by tapestries and crowded bookshelves, and more books are strewn on the bed and on the window seat.
+Edric's Bedroom: A large, rumpled bed sits in one corner of the room. In the opposite corner, a small altar is set up. 
